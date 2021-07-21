@@ -19,12 +19,13 @@ const newImages = [
   alt: "whale tale above water surface",},
 ]
 
+let lastImage
+let newImg;
 
 newImages.forEach(function(image){
   let img = document.createElement("img");
   img.src = image.src;
   document.getElementById("mygallery").appendChild(img);
-
 
   
 
@@ -49,53 +50,45 @@ newImages.forEach(function(image){
     prevButton.classList.add("back-button");
     prevButtonImg.src="image 1.jpg"; 
     document.querySelector(".fullimage").prepend(prevButton);
-    prevButton.setAttribute("onclick", "changeImg(0)");
     nextButton.append(nextButtonImg);
     nextButton.classList.add("next-button");
     nextButtonImg.src="image 2.jpg";
     document.querySelector(".fullimage").append(nextButton);
-    nextButton.setAttribute("onclick", "changeImg(1)");
+  
+
+    document.querySelector("button").addEventListener("click", () => {
+      document.querySelector(".currentimage").remove();
     
+      if (nextButton){
+        newImg= lastImage + 1;
+        if(newImg>newImages.length){
+          newImg = 1;
+        }
+      } else if (prevButton){
+        newImg= lastImage - 1;
+        if (newImg<newImages.length){
+          newImg = newImages.length;
+        }
+      }
+      let getNewWindow= document.querySelector(".fullimage");
+      let followingImg= document.createElement("img");
+      followingImg.classList.add("next-img");
+      getNewWindow.append(followingImg);
+    
+      followingImg.src = newImages[indexnewImg].src;
+    })
+
+
     }
-
-
-    
   })
-
- 
 })
+
 
 function closeImg(){
   document.querySelector(".fullimage").remove();
 }
 
-  function changeImg(change){
-  document.querySelector(".currentimage").remove();
   
   
-  let getNewWindow= document.querySelector(".fullimage");
-  let followingImg= document.createElement("img");
-  followingImg.classList.add("next-img");
-  getNewWindow.append(followingImg);
-  
-
-  let newImg;
-  let lastImage=1;
-
-  if (change===1){
-    newImg= lastImage + 1;
-    if(newImg>newImages.length){
-      newImg = 1;
-    }
-  } else if (change===0){
-    newImg= lastImage - 1;
-    if (newImg<newImages.length){
-      newImg = newImages.length;
-    }
-  }
-
-  followingImg.src = image.src + newImg;
-  
-}
   
 
