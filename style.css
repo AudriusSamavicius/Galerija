@@ -1,0 +1,66 @@
+body {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #C4C4C4;
+    width: 680px;
+    height: 700px;
+    margin: 0 auto;
+    grid-gap: 5px;
+    
+    
+}
+#mygallery {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    
+   
+    
+}
+#mygallery img{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: 1s;
+
+}
+#mygallery img:hover{
+    transform: scale(1.1);
+}
+.fullimage{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index:10;
+}
+.fullimage img{
+    max-width: 80vw;
+    max-height: 80wh;
+    
+}
+button{
+    display:block;
+    max-height: max-content;
+    max-width: max-content;
+    border-radius: 3px;
+    z-index: 50;
+    
+    
+   
+}
+
+.next-button, .back-button{
+    max-width: max-content;
+    max-height: max-content;
+    
+  
+}
